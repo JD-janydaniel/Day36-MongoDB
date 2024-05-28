@@ -8,6 +8,7 @@
   <li>Attached the Queries for each question in the Queries.txt file</li>
   <li>Attached the Queries for each collections in the Collections.txt file</li>
   <li>And also attached the screen shorts for those question in png file</li>
+  <li>Collection created are given below</li>
   <ul>
     <li>users</li>
     <li>codekata</li>
