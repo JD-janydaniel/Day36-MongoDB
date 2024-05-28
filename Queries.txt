@@ -1,0 +1,282 @@
+
+
+1.Find all the topics and tasks which are thought in the month of October
+Query:
+db.tasks.aggregate([
+  {
+$lookup:{
+from:'topics',
+localField:'topic_id',
+foreignField:'id',
+as:'task_topicDetails'
+}
+},
+  {
+$unwind:'$task_topicDetails'
+},
+  {
+$match:{
+date:{
+        $gte: ISODate("2020-10-01"),
+        $lte: ISODate("2020-10-31")
+}
+}
+},
+  {
+$project:{
+task_name:1,
+topic_name:'$task_topicDetails.topic_name',
+_id:0
+}
+}
+]).toArray();
+
+Output:
+[
+  {
+    task_name: 'Arrow function, IIFE function',
+    topic_name: 'javascrit function'
+  },
+  {
+    task_name: 'Arrow function, IIFE function',
+    topic_name: 'javascrit events'
+  },
+  { task_name: 'Arrow function, IIFE function', topic_name: 'promise' },
+  {
+    task_name: 'Arrow function, IIFE function',
+    topic_name: 'async function'
+  },
+  { task_name: 'Arrow function, IIFE function', topic_name: 'mysql' },
+  { task_name: 'Arrow function, IIFE function', topic_name: 'mongoDB' },
+  { task_name: 'Arrow function, IIFE function', topic_name: 'Dom' }
+]
+
+2.Find all the company drives which appeared between 15 oct-2020 and 31-oct-2020
+Query:
+db.company_drives.aggregate([
+  {
+$match:{
+date:{
+$gte: ISODate("2020-10-15"),
+$lte: ISODate("2020-10-31")
+}
+}
+},
+  {
+$project:{
+drive_name:1,
+_id:0
+}
+}
+]).toArray();
+
+Output:
+[
+  { drive_name: 'google' },
+  { drive_name: 'microsoft' },
+  { drive_name: 'amazon' },
+  { drive_name: 'netflix' },
+  { drive_name: 'oracle' }
+]
+
+3.Find all the company drives and students who are appeared for the placement.
+Query:
+db.company_drives.aggregate([
+  {
+$lookup:{
+from:'users',
+localField:'user_id',
+foreignField:'id',
+as:'placement'
+}
+},
+  {
+$unwind:'$placement'
+},
+  {
+$project:{
+drive_name:1,
+student_name:'$placement.user_name',
+_id:0
+}
+}
+]);
+
+Output:
+[
+  { drive_name: 'google', student_name: 'jelin' },
+  { drive_name: 'microsoft', student_name: 'ajith' },
+  { drive_name: 'amazon', student_name: 'david' },
+  { drive_name: 'redbus', student_name: 'kumar' },
+  { drive_name: 'hotstar', student_name: 'rangith' },
+  { drive_name: 'netflix', student_name: 'santhos' },
+  { drive_name: 'oracle', student_name: 'hulk' }
+]
+
+4.Find the number of problems solved by the user in codekata
+Query:
+db.codekata.aggregate([
+  {
+$lookup:{
+from:'users',
+localField:'user_id',
+foreignField:'id',
+as:'codekata_details'
+}
+},
+  {$unwind:'$codekata_details'},
+  {
+$project:{
+problems_solved:1,
+user_name:'$codekata_details.user_name',
+_id:0
+}
+}
+]).toArray();
+
+Output:
+[
+  { problems_solved: 130, user_name: 'john' },
+  { problems_solved: 135, user_name: 'david' },
+  { problems_solved: 255, user_name: 'stark' },
+  { problems_solved: 280, user_name: 'jelin' },
+  { problems_solved: 270, user_name: 'kumar' },
+  { problems_solved: 385, user_name: 'sachin' },
+  { problems_solved: 125, user_name: 'vijay' },
+  { problems_solved: 100, user_name: 'ajith' },
+  { problems_solved: 478, user_name: 'shiva' },
+  { problems_solved: 393, user_name: 'ram' },
+  { problems_solved: 393, user_name: 'ravi' },
+  { problems_solved: 388, user_name: 'rahul' },
+  { problems_solved: 550, user_name: 'rangeesh' },
+  { problems_solved: 440, user_name: 'mani' },
+  { problems_solved: 330, user_name: 'selvan' },
+  { problems_solved: 444, user_name: 'frede' },
+  { problems_solved: 777, user_name: 'ramesh' },
+  { problems_solved: 120, user_name: 'rangith' },
+  { problems_solved: 125, user_name: 'ragu' },
+  { problems_solved: 300, user_name: 'shami' },
+  { problems_solved: 300, user_name: 'santhos' },
+  { problems_solved: 400, user_name: 'sami' },
+  { problems_solved: 200, user_name: 'hulk' },
+  { problems_solved: 220, user_name: 'strange' },
+  { problems_solved: 230, user_name: 'black' },
+  { problems_solved: 330, user_name: 'red' },
+  { problems_solved: 430, user_name: 'blue' },
+  { problems_solved: 530, user_name: 'yellow' },
+  { problems_solved: 630, user_name: 'white' },
+  { problems_solved: 730, user_name: 'brown' }
+]
+
+5.Find all the mentors with who has the mentee's count more than 15
+Query:
+db.users.aggregate([
+  {
+    $group: {
+      _id: "$mentor_id",
+      mentee_count: { $sum: 1 }
+    }
+  },
+  {
+    $match: {
+      mentee_count: { $gt: 15 }
+    }
+  },
+  {
+    $lookup: {
+      from: "mentors",
+      localField: "_id",
+      foreignField: "id",
+      as: "mentor_details"
+    }
+  },
+  {
+    $unwind: "$mentor_details"
+  },
+  {
+    $project: {
+      _id: 0,
+      mentor_id: "$_id",
+      mentor_name: "$mentor_details.mentor_name",
+      mentee_count: 1
+    }
+  }
+]).pretty();
+
+ Output:
+ {
+  mentee_count: 17,
+  mentor_id: 1,
+  mentor_name: 'jany'
+}
+
+6.Find the number of users who are absent and task is not submitted  between 15 oct-2020 and 31-oct-2020
+Query:
+const absentUsers = db.attendance.aggregate([
+  {
+    $match: {
+      date: { $gte: new Date("2020-10-15"), $lte: new Date("2020-10-31") },
+      status: "absent"
+    }
+  },
+  {
+    $group: {
+      _id: "$user_id"
+    }
+  }
+]).toArray().map(user => user._id);
+
+const dueTasks = db.tasks.aggregate([
+  {
+    $match: {
+      submision_date: { $gte: new Date("2020-10-15"), $lte: new Date("2020-10-31") }
+    }
+  },
+  {
+    $group: {
+      _id: "$topic_id"
+    }
+  }
+]).toArray().map(task => task._id);
+
+const usersWithDueTasks = db.tasks.aggregate([
+  {
+    $match: {
+      submision_date: { $gte: new Date("2020-10-15"), $lte: new Date("2020-10-31") }
+    }
+  },
+  {
+    $lookup: {
+      from: "users",
+      localField: "topic_id",
+      foreignField: "id",
+      as: "users"
+    }
+  },
+  {
+    $unwind: "$users"
+  },
+  {
+    $group: {
+      _id: "$users.id"
+    }
+  }
+]).toArray().map(user => user._id);
+
+const absentAndNotSubmitted = absentUsers.filter(user => usersWithDueTasks.includes(user));
+
+const usersDetails = db.users.find({ id: { $in: absentAndNotSubmitted } }, { user_name: 1, _id: 0 }).toArray();
+
+const userCount = usersDetails.length;
+
+print("Number of users who are absent and have not submitted tasks: ", userCount);
+print("Users who are absent and have not submitted tasks:");
+usersDetails.forEach(user => print(user.user_name));
+
+
+Output:
+Number of users who are absent and have not submitted tasks: 
+2
+Users who are absent and have not submitted tasks:
+sachin
+vijay

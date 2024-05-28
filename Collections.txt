@@ -1,0 +1,142 @@
+MongoDB Task
+Design database for Zen class programme
+
+
+use GuviZenDB;
+
+db.users.insertMany([
+{id:1,user_name:'john',email:'john@gmail.com',mentor_id:1},
+{id:2,user_name:'david',email:'david@gmail.com',mentor_id:3},
+{id:3,user_name:'stark',email:'stark@gmail.com',mentor_id:2},
+{id:4,user_name:'jelin',email:'jelin@gmail.com',mentor_id:1},
+{id:5,user_name:'kumar',email:'kumar@gmail.com',mentor_id:1},
+{id:6,user_name:'sachin',email:'sachin@gmail.com',mentor_id:1},
+{id:7,user_name:'vijay',email:'vijay@gmail.com',mentor_id:2},
+{id:8,user_name:'ajith',email:'ajith@gmail.com',mentor_id:1},
+{id:9,user_name:'shiva',email:'shiva@gmail.com',mentor_id:2},
+{id:10,user_name:'ram',email:'ram@gmail.com',mentor_id:2},
+{id:11,user_name:'ravi',email:'ravi@gmail.com',mentor_id:1},
+{id:12,user_name:'rahul',email:'rahul@gmail.com',mentor_id:1},
+{id:13,user_name:'rangeesh',email:'rangeesh@gmail.com',mentor_id:1},
+{id:14,user_name:'mani',email:'mani@gmail.com',mentor_id:2},
+{id:15,user_name:'selvan',email:'selvan@gmail.com',mentor_id:1},
+{id:16,user_name:'frede',email:'frede@gmail.com',mentor_id:3},
+{id:17,user_name:'ramesh',email:'ramesh@gmail.com',mentor_id:2},
+{id:18,user_name:'rangith',email:'ranjith@gmail.com',mentor_id:2},
+{id:19,user_name:'ragu',email:'ragu@gmail.com',mentor_id:1},
+{id:20,user_name:'shami',email:'shami@gmail.com',mentor_id:1},
+{id:21,user_name:'santhos',email:'santhos@gmail.com',mentor_id:1},
+{id:22,user_name:'sami',email:'sami@gmail.com',mentor_id:1},
+{id:23,user_name:'hulk',email:'hulk@gmail.com',mentor_id:2},
+{id:24,user_name:'strange',email:'strange@gmail.com',mentor_id:2},
+{id:25,user_name:'black',email:'black@gmail.com',mentor_id:3},
+{id:26,user_name:'red',email:'red@gmail.com',mentor_id:1},
+{id:27,user_name:'blue',email:'blue@gmail.com',mentor_id:1},
+{id:28,user_name:'yellow',email:'yellow@gmail.com',mentor_id:1},
+{id:29,user_name:'white',email:'white@gmail.com',mentor_id:1},
+{id:30,user_name:'brown',email:'brown@gmail.com',mentor_id:3}
+]);
+........................................................................................................................................
+
+db.codekata.insertMany([
+{id:1,problems_solved:130,status:"completed",user_id:1},
+{id:2,problems_solved:135,status:"completed",user_id:2},
+{id:3,problems_solved:255,status:"completed",user_id:3},
+{id:4,problems_solved:280,status:"completed",user_id:4},
+{id:5,problems_solved:270,status:"completed",user_id:5},
+{id:6,problems_solved:385,status:"completed",user_id:6},
+{id:7,problems_solved:125,status:"completed",user_id:7},
+{id:8,problems_solved:100,status:"completed",user_id:8},
+{id:9,problems_solved:478,status:"completed",user_id:9},
+{id:10,problems_solved:393,status:"completed",user_id:10},
+{id:11,problems_solved:393,status:"completed",user_id:11},
+{id:12,problems_solved:388,status:"completed",user_id:12},
+{id:13,problems_solved:550,status:"completed",user_id:13},
+{id:14,problems_solved:440,status:"completed",user_id:14},
+{id:15,problems_solved:330,status:"completed",user_id:15},
+{id:16,problems_solved:444,status:"completed",user_id:16},
+{id:17,problems_solved:777,status:"completed",user_id:17},
+{id:18,problems_solved:120,status:"completed",user_id:18},
+{id:19,problems_solved:125,status:"completed",user_id:19},
+{id:20,problems_solved:300,status:"completed",user_id:20},
+{id:21,problems_solved:300,status:"completed",user_id:21},
+{id:22,problems_solved:400,status:"completed",user_id:22},
+{id:23,problems_solved:200,status:"completed",user_id:23},
+{id:24,problems_solved:220,status:"completed",user_id:24},
+{id:25,problems_solved:230,status:"completed",user_id:25},
+{id:26,problems_solved:330,status:"completed",user_id:26},
+{id:27,problems_solved:430,status:"completed",user_id:27},
+{id:28,problems_solved:530,status:"completed",user_id:28},
+{id:29,problems_solved:630,status:"completed",user_id:29},
+{id:30,problems_solved:730,status:"completed",user_id:30}
+]);
+.....................................................................................................................................................
+db.attendance.insertMany([
+{id:1,date: new Date("2020-10-15"),status:"present",user_id:1},
+{id:2,date: new Date("2020-10-15"),status:"absent",user_id:2},
+{id:3,date: new Date("2020-10-15"),status:"present",user_id:3},
+{id:4,date: new Date("2020-10-15"),status:"present",user_id:4},
+{id:5,date: new Date("2020-10-15"),status:"present",user_id:5},
+{id:6,date: new Date("2020-10-15"),status:"absent",user_id:6},
+{id:7,date: new Date("2020-10-15"),status:"absent",user_id:7},
+{id:8,date: new Date("2020-10-15"),status:"present",user_id:8},
+{id:9,date: new Date("2020-10-15"),status:"absent",user_id:9},
+{id:10,date: new Date("2020-10-15"),status:"present",user_id:10},
+{id:11,date: new Date("2020-10-15"),status:"present",user_id:11},
+{id:12,date: new Date("2020-10-15"),status:"absent",user_id:12},
+{id:13,date: new Date("2020-10-15"),status:"present",user_id:13},
+{id:14,date: new Date("2020-10-15"),status:"absent",user_id:14},
+{id:15,date: new Date("2020-10-15"),status:"present",user_id:15},
+{id:16,date: new Date("2020-10-15"),status:"absent",user_id:16},
+{id:17,date: new Date("2020-10-15"),status:"present",user_id:17},
+{id:18,date: new Date("2020-10-15"),status:"absent",user_id:18},
+{id:19,date: new Date("2020-10-15"),status:"present",user_id:19},
+{id:20,date: new Date("2020-10-15"),status:"absent",user_id:20},
+{id:21,date: new Date("2020-10-15"),status:"absent",user_id:21},
+{id:22,date: new Date("2020-10-15"),status:"present",user_id:22},
+{id:23,date: new Date("2020-10-15"),status:"absent",user_id:23},
+{id:24,date: new Date("2020-10-15"),status:"present",user_id:24},
+{id:25,date: new Date("2020-10-15"),status:"absent",user_id:25},
+{id:26,date: new Date("2020-10-15"),status:"present",user_id:26},
+{id:27,date: new Date("2020-10-15"),status:"absent",user_id:27},
+{id:28,date: new Date("2020-10-15"),status:"present",user_id:28},
+{id:29,date: new Date("2020-10-15"),status:"absent",user_id:29},
+{id:30,date: new Date("2020-10-15"),status:"present",user_id:30}
+]);
+..............................................................................................................................................
+db.topics.insertMany([
+{id:1,topic_name:"javascrit function",date: new Date("2020-10-15")},
+{id:2,topic_name:"javascrit events",date: new Date("2020-10-15")},
+{id:3,topic_name:"promise",date: new Date("2020-10-15")},
+{id:4,topic_name:"async function",date: new Date("2020-10-15")},
+{id:5,topic_name:"mysql",date: new Date("2020-10-15")},
+{id:6,topic_name:"mongoDB",date: new Date("2020-10-15")},
+{id:7,topic_name:"Dom",date: new Date("2020-10-15")}
+]);
+...............................................................................................................................................
+db.tasks.insertMany([
+{id:1,task_name:"Arrow function, IIFE function",date: new Date("2020-10-15"),submision_date:new Date("2020-10-19"),topic_id:1},
+{id:2,task_name:"Arrow function, IIFE function",date: new Date("2020-10-15"),submision_date:new Date("2020-11-16"),topic_id:2},
+{id:3,task_name:"Arrow function, IIFE function",date: new Date("2020-10-15"),submision_date:new Date("2020-11-15"),topic_id:3},
+{id:4,task_name:"Arrow function, IIFE function",date: new Date("2020-10-15"),submision_date:new Date("2020-11-15"),topic_id:4},
+{id:5,task_name:"Arrow function, IIFE function",date: new Date("2020-10-15"),submision_date:new Date("2020-11-15"),topic_id:5},
+{id:6,task_name:"Arrow function, IIFE function",date: new Date("2020-10-15"),submision_date:new Date("2020-10-20"),topic_id:6},
+{id:7,task_name:"Arrow function, IIFE function",date: new Date("2020-10-15"),submision_date:new Date("2020-10-22"),topic_id:7}
+]);
+..............................................................................................................................................
+db.company_drives.insertMany([
+{id:1,drive_name:"google",date: new Date("2020-10-15"),user_id:4},
+{id:2,drive_name:"microsoft",date: new Date("2020-10-22"),user_id:8},
+{id:3,drive_name:"amazon",date: new Date("2020-10-30"),user_id:2},
+{id:4,drive_name:"redbus",date: new Date("2020-11-15"),user_id:5},
+{id:5,drive_name:"hotstar",date: new Date("2020-10-14"),user_id:18},
+{id:6,drive_name:"netflix",date: new Date("2020-10-28"),user_id:21},
+{id:7,drive_name:"oracle",date: new Date("2020-10-24"),user_id:23}
+]);
+..............................................................................................................................................
+db.mentors.insertMany([
+{id:1,mentor_name:"jany",age:27,email:'jany@gmail.omm'},
+{id:2,mentor_name:"devin",age:33,email:'devin@gmail.com'},
+{id:3,mentor_name:"ruban",age:35,email:'rupan@gmail.com'}
+]);
+..............................................................................................................................................
